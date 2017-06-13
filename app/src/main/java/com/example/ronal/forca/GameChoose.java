@@ -13,6 +13,7 @@ public class GameChoose extends AppCompatActivity
     Button btnDado;
     Button btnPong;
     Button btnAppDoSoares;
+    Button btnTRex;
     Button btnVoltarParaForca;
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -21,6 +22,7 @@ public class GameChoose extends AppCompatActivity
         btnFrog = (Button) findViewById(R.id.frogBtn);
         btnDado = (Button) findViewById(R.id.dadoBtn);
         btnPong = (Button) findViewById(R.id.pongBtn);
+        btnTRex = (Button) findViewById(R.id.rexJumpBtn);
         btnVoltarParaForca = (Button) findViewById(R.id.backToForcaBtn);
         btnAppDoSoares = (Button) findViewById(R.id.appDoSoaresBtn);
         btnFrog.setOnClickListener(new View.OnClickListener(){
@@ -50,6 +52,13 @@ public class GameChoose extends AppCompatActivity
             @Override
             public void onClick(View v) {
                 Intent i = new Intent("AplicativoDoSoares");
+                startActivity(i);
+            }
+        });
+        btnTRex.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent("T-RexJump");
                 startActivity(i);
             }
         });

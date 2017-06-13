@@ -36,6 +36,12 @@
         android:text="Aplicativo do Lucas Soares" />
 
     <Button
+        android:id="@+id/rexJumpBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="T-Rex Jump" />
+
+    <Button
         android:id="@+id/backToForcaBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
