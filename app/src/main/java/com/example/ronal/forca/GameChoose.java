@@ -58,7 +58,7 @@ public class GameChoose extends AppCompatActivity
         btnTRex.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent("T-RexJump");
+                Intent i = new Intent("TRexJump");
                 startActivity(i);
             }
         });
