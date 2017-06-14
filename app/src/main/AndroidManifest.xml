@@ -24,6 +24,9 @@
         <activity android:name=".GameChoose">
 
         </activity>
+        <activity android:name=".MotumboActivity">
+
+        </activity>
     </application>
 
 </manifest>

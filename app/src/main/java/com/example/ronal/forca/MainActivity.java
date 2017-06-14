@@ -1,9 +1,12 @@
 package com.example.ronal.forca;
 
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.NotificationCompat;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -79,11 +82,20 @@ public class MainActivity extends AppCompatActivity
         editor.putBoolean(key, value);
 
         // Commit as edições
-        editor.commit();
+        editor.apply();
     }
     private boolean recuperar(String key){
         SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
-        return settings.getBoolean(key,false);
+        return settings.getBoolean(key, false);
+    }
+    private void SendMotumboNotification()
+    {
+        NotificationCompat.Builder mBuilder = (NotificationCompat.Builder) new NotificationCompat.Builder(this).setSmallIcon(R.mipmap.half_motumbo).setContentTitle("Você encontrou todas as letras").setContentText("Cuidado com o motumbo").setAutoCancel(true);
+        PendingIntent pi = PendingIntent.getActivity(this, 0, new Intent(this, MotumboActivity.class), 0);
+        mBuilder.setContentIntent(pi);
+        mBuilder.setVibrate(new long[] {100, 250, 100, 500});
+        NotificationManager mNotificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+        mNotificationManager.notify(R.string.app_name, mBuilder.build());
     }
     protected void GenerateLetters(String bundleMsg)
     {
@@ -125,6 +137,10 @@ public class MainActivity extends AppCompatActivity
                 armazenar("Jogo7",true);
                 Toast.makeText(this,"VOCE OBTEVE TODAS AS LETRAS DO FROG PARABENS, Encontre o resto das letras em outros jogos",Toast.LENGTH_LONG).show();
                 break;
+        }
+        if(recuperar("Jogo1") && recuperar("Jogo2") && recuperar("Jogo3") && recuperar("Jogo4") && recuperar("Jogo5") && recuperar("Jogo6") && recuperar("Jogo7"))
+        {
+            SendMotumboNotification();
         }
     }
 }
